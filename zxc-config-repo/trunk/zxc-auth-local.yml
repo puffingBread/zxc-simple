@@ -5,12 +5,14 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1111/eureka/
+  instance:
+      prefer-ip-address: true
 
 spring:
   application:
       name: zxc-auth
   datasource:
-      url: jdbc:mysql://localhost:3306/zxc_auth?characterEncoding=UTF-8&useSSL=false
+      url: jdbc:mysql://localhost:3306/zxc_user?characterEncoding=UTF-8&useSSL=false
       username: root
       password:
       driver-class-name: com.mysql.jdbc.Driver
@@ -23,10 +25,29 @@ spring:
       time-between-eviction-runs-millis: 20000
       min-evictable-idle-time-millis: 28700
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
-    properties:
-      hibernate:
-        current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+      database-platform: org.hibernate.dialect.MySQLDialect
+      properties:
+        hibernate:
+          current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+  thymeleaf:
+      content-type: application/xhtml+xml
+  security:
+      user:
+        password: password
+      oauth2:
+        resource:
+          userInfoUri:  http://localhost:8899/userauth/me
+          preferTokenInfo:  false
+        sso:
+          home:
+            path: /,/**/*.html
+            secure: false
+        client:
+          accessTokenUri: http://localhost:8899/userauth/oauth/token
+          userAuthorizationUri: http://localhost:8899/userauth/oauth/authorize
+          clientId: client
+          clientSecret: secret
+      loginSecret:  puffing007
 
 liquibase:
    enabled: true
