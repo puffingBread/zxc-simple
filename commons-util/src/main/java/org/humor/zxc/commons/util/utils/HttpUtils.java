@@ -9,8 +9,6 @@ import java.nio.charset.StandardCharsets;
 public class HttpUtils {
 	/**
 	 * 获取输入流
-	 * @param request
-	 * @return
 	 */
 	public static String getBufferStream(HttpServletRequest request){
 		StringBuilder sb = new StringBuilder();
@@ -19,7 +17,7 @@ public class HttpUtils {
 			InputStream in = request.getInputStream();
 			InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8);
 			BufferedReader buffer = new BufferedReader(reader);
-			String str = null;
+			String str;
 			
 			while ((str = buffer.readLine()) != null) {
 				sb.append(str);
