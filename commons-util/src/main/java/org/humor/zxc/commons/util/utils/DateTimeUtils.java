@@ -18,7 +18,7 @@ import java.util.Date;
 public final class DateTimeUtils {
 
 	// 格式：年－月－日 小时：分钟：秒
-	public static final String FORMAT_ONE = "yyyy-MM-dd HH:mm:ss";
+	public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
 	// 格式：年－月－日 小时：分钟
 	public static final String FORMAT_TWO = "yyyy-MM-dd HH:mm";
@@ -27,16 +27,16 @@ public final class DateTimeUtils {
 	public static final String FORMAT_THREE = "yyyyMMdd-HHmmss";
 
 	// 格式：年－月－日
-	public static final String LONG_DATE_FORMAT = "yyyy-MM-dd";
+	public static final String YYYY_MM_DD = "yyyy-MM-dd";
 
 	// 格式：月－日
 	public static final String SHORT_DATE_FORMAT = "MM-dd";
 
 	// 格式：小时：分钟：秒
-	public static final String LONG_TIME_FORMAT = "HH:mm:ss";
+	public static final String HH_MM_SS = "HH:mm:ss";
 
 	// 格式：年-月
-	public static final String MONTG_DATE_FORMAT = "yyyy-MM";
+	public static final String YYYY_MM = "yyyy-MM";
 
 	// 年的加减
 	public static final int SUB_YEAR = Calendar.YEAR;
@@ -572,7 +572,7 @@ public final class DateTimeUtils {
 	 */
 	public static long getSecondsByDate(String date) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(stringtoDate(date, DateTimeUtils.LONG_DATE_FORMAT));
+		calendar.setTime(stringtoDate(date, DateTimeUtils.YYYY_MM_DD));
 		return calendar.getTimeInMillis() / 1000;
 	}
 	
@@ -585,7 +585,7 @@ public final class DateTimeUtils {
 	 */
 	public static long getSecondsByDateTime(String dateTime) {
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(stringtoDate(dateTime, DateTimeUtils.FORMAT_ONE));
+		calendar.setTime(stringtoDate(dateTime, DateTimeUtils.YYYY_MM_DD_HH_MM_SS));
 		return calendar.getTimeInMillis() / 1000;
 	}
 	
